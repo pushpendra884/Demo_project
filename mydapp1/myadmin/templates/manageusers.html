@@ -1,0 +1,56 @@
+{% extends 'adminhome.html' %}
+{% load static %}
+
+{% block content %}
+<center>
+<div id="content" style="margin-left: 20%;">
+<h1>View & Manage User Details</h1>
+<table>
+    <tr>
+        <th>RegID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Address</th>
+        <th>Mobile</th>
+        <th>City</th>
+        <th>Gender</th>
+        <th>Info</th>
+        <th>Status</th>
+        <th>Actinon</th>
+    </tr>
+    <tr><td colspan="10"><hr/></td></tr>
+    {% for row in userDetails %}
+    <tr><!--this is for show all the data of database which is in table-->
+        <!--mention same title name as mentioned in database then only it will show the data example:regid , city-->
+        <td>{{row.regid}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.username}}</td>
+        <td>{{row.address}}</td>
+        <td>{{row.mobile}}</td>
+        <td>{{row.city}}</td>
+        <td>{{row.gender}}</td>
+        <td>{{row.dt}}</td>
+        <td>
+            {% if row.status %}
+            <a href="/myadmin/manageuserstatus/?status=block&regid={{row.regid}}" title="Block User">
+            <img src="{% static 'images/blockuser.PNG' %}" height="25" width="25"/>
+            </a>
+            {% else %}
+            <a href="/myadmin/manageuserstatus/?status=verify&regid={{row.regid}}" title="Verify User">
+            <img src="{% static 'images/unblock.PNG' %}" height="25" width="25"/>
+            </a>
+            {% endif %}
+        </td>
+        <td>  
+            <a href="/myadmin/manageuserstatus/?status=delete&regid={{row.regid}}" title="Delete User">
+            <img src="{% static 'images/delete.PNG' %}" height="25" width="25"/>
+            </a>
+        </td>
+    </tr>
+    <tr><td colspan="10"><hr/></td></tr>
+    {% endfor%}
+</table>   
+</div>
+</center>
+<div class="cleaner"></div>
+{% endblock %}

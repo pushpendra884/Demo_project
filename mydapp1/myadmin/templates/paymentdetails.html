@@ -1,0 +1,30 @@
+{% extends 'adminhome.html' %}
+{% load static %}
+
+{% block content %}
+<div id="content" style="margin-left: 35%;">
+    <h2>Information For Funds Raised</h2>
+    <table>
+        <tr>
+            <th>TxnID</th>
+            <th>UserID</th>
+            <th>Amount</th>
+            <th>Payment Info</th>
+        </tr>
+        <tr><td colspan="4"><hr/></td></tr>
+        {% for row in paymentinfo %}
+        <!--this is for show all the data of database which is in table-->
+        <!--mention same title name as mentioned in database then only it will show the data example:regid , city-->
+        <tr>
+            <td>{{row.txnid}}</td>
+            <td>{{row.uid}}</td>
+            <td>{{row.price}}</td>
+            <td>{{row.info}}</td>
+        </tr>
+        <tr><td colspan="4"><hr/></td></tr>
+        {% endfor%}
+    </table>   
+    </div>
+    </center>
+<div class="cleaner"></div>
+{% endblock %}

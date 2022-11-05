@@ -1,0 +1,35 @@
+{% extends 'userhome.html' %}
+{% load static %}
+
+{% block content %}
+<center>
+<div id="content" style="margin-left: 20%;">
+   <h1>Change Password Here!!!</h1>
+   <div id="content">
+    <font color="white" style="font-size:20px;">{{output}}</font>
+    <form method="POST" action="/user/cpuser/" >
+    {% csrf_token %}
+    <table cellspacing="5" cellpadding="5">
+    <tr>
+    <td>Old Password</td>
+    <td><input type="password" name="opass" placeholder="Enter old password" /></td>    
+    </tr>
+    <tr>
+    <td>New Password</td>
+    <td><input type="password" name="npass" placeholder="Enter New password" /></td>    
+    </tr>     
+    <tr>
+    <td>Confirm New Password</td>
+    <td><input type="password" name="cnpass" placeholder="Confirm new password" /></td>
+    </tr>
+    <tr>
+    <td colspan="2"><input type="submit" value="Change Password" /></td>
+    </tr>
+    </table>
+    </form>
+    </div>
+    <div class="cleaner"></div>
+</div>
+</center>
+<div class="cleaner"></div>
+{% endblock %}

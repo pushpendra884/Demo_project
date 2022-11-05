@@ -1,0 +1,73 @@
+{% extends 'master_template.html' %}
+
+{% block header %}
+<font>Welcome Admin :{{sunm}}</font>
+
+<div id="site_title"><h1 style="text-align:center">Leatherworld.com</h1></div>
+{% endblock %}
+
+
+{% block top_header %}
+<div id="tooplate_top">
+    <div id="tooplate_menu" class="ddsmoothmenu">
+        <ul>
+            <li><a href="/myadmin/" class="selected"><span></span>Admin Home</a></li>
+            <li><a href=""><span></span>Manage Users</a>
+                <ul>
+                <li><a href="/myadmin/manageusers/"><span></span>View & Manage Users</a></li>
+                <li><a href="/myadmin/paymentdetails/"><span></span>View Payment Details</a></li>
+            </ul>
+            </li>
+                <li><a href="">Manage Options</a>
+                    <ul>
+                        <li><a href="/myadmin/addcategory/">Add Category</a></li>
+                        <li><a href="/myadmin/addsubcategory/">Add sub Category</a></li>
+                        <li><a href="/myadmin/addproduct/">Add Product</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href=""><span></span>Settings</a>
+                    <ul>
+                        <li><a href="/myadmin/cpmyadmin/">Change Password</a></li>
+                        <li><a href="/myadmin/epmyadmin/">Edit Profile</a></li>
+                    </ul>
+                <li><a href="/login/"><span></span>Logout</a> </li>
+            <!--
+            <li><a href="/contact/"><span></span>Contact</a></li>
+            <li><a href="/register/"><span></span>Register</a></li>-->
+        </ul>
+        <br style="clear: left" />
+    </div> <!-- end of menu -->
+    <div id="tooplate_search">
+        <form action="#" method="get">
+          <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+          <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
+        </form>
+    </div>
+</div> <!-- end of top -->
+{% endblock %}
+
+{% block content_top %}
+{% endblock %}
+
+{% block content %}
+<center>
+<div id="content" style="margin-left: 20%;">
+   <h1>Welcome to Admin Page</h1>
+   <h2>LeatherWorld.com</h2>
+   
+</div>
+</center>
+<div class="cleaner"></div>
+{% endblock %}
+
+{% block tooplate_footer_wrapper %}
+{% endblock %}
+
+
+{% block about_us %} 
+<center style="margin-left: 450px;">
+<p>Copyright © 2048 <a href="#">LeatherWorld.com</a></p>
+</center>
+{% endblock %}
+

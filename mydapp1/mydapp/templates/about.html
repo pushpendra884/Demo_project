@@ -1,0 +1,32 @@
+{% extends 'master_template.html' %}
+
+{% block content %}
+<script>
+    function ajaxResponse()
+    {
+       var xhttp = new XMLHttpRequest() ;
+       xhttp.open("GET","http://localhost:8000/ajaxResponse/",true);
+       xhttp.send();
+    
+       xhttp.onreadystatechange=function(){
+        if(xhttp.status==200 && xhttp.readyState==4 )
+        {
+            document.getElementById("response").innerHTML=xhttp.responseText;
+        }
+       }
+    }
+    
+    </script>
+    
+    <div id="content">
+    <h2>Welcome to LeatherWorld.com</h2>
+    <h2>About page</h2>
+    
+    <button onclick="ajaxResponse()">Click to make AJAX Work</button>
+    <h2 id="response"></h2>
+</div>
+<div id="sidebar"> 
+<h3>Featured Project</h3>
+</div>
+<div class="cleaner"></div>
+{% endblock %}

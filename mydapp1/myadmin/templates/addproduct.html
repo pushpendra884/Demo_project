@@ -1,0 +1,70 @@
+{% extends 'adminhome.html' %}
+{% load static %}
+
+
+{% block content %}
+<script>
+    function scAJAX(catnm)
+    {
+     var xhttp = new XMLHttpRequest();
+     xhttp.open("GET","http://localhost:8000/myadmin/scAJAX/?catnm="+catnm,true);     
+     xhttp.send();
+
+     xhttp.onreadystatechange=function()
+     {
+      if(xhttp.status==200 && xhttp.readyState==4)
+       {
+        document.getElementById("response").innerHTML=xhttp.responseText;    
+       }       
+     }
+
+    }
+</script>
+<div id="content">
+<h1>Add Category Here!!!</h1>
+<font color="white" style="font-size:20px;">{{output}}</font>
+<form method="POST" action="/myadmin/addproduct/" enctype="multipart/form-data" >
+{% csrf_token %}
+<table cellspacing="5" cellpadding="5">
+    <tr>
+        <td>Product title</td>
+        <td><input type="text" name="ptitle" placeholder="Enter Product Title" required /></td>    
+        </tr>    
+        <tr>
+        <td>Category</td>
+        <td>
+        <select onchange="scAJAX(this.value)" name="pcategory" style="width:100%;">
+        <option>Select Category</option>    
+        {% for row in clist %}
+        <option>{{row.catnm}}</option>
+        {% endfor %}
+        </select>    
+        </td>    
+        </tr>
+        <tr>
+        <td>Sub Category</td>
+        <td>
+        <select name="psubcategory" style="width:100%;" id="response">
+        <option>Select Sub Category</option>    
+        </select>    
+        </td>    
+        </tr>
+        <tr>
+        <td>Product description</td>
+        <td><textarea rows="5" type="text" name="pdescription" placeholder="Enter Product Description" required></textarea></td>    
+        </tr>
+        <tr>
+        <td>Product price</td>
+        <td><input type="text" name="pprice" placeholder="Enter Product Price" required /></td>    
+        </tr>
+        <tr>
+        <td><input type="submit" name="s" value="Add Product" /></td>    
+        </tr>
+</table>
+</form>
+</div>
+<div id="sidebar"> 
+<h3>Featured Project</h3>
+</div>
+<div class="cleaner"></div>
+{% endblock %}

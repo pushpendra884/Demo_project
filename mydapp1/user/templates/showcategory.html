@@ -1,0 +1,40 @@
+{% extends 'userhome.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+#main
+{
+ width: 600px;
+ height: auto;
+ 
+}
+.main_part
+{
+ width: 200px;
+ height: 150px;
+ float: left;
+}
+.main_part a
+{
+ color: white;    
+ text-decoration:none;
+}
+</style>
+<h1 style="font-size: 35px;">Category >></h1>
+<center>
+<div id="main">
+{% for row in clist %}
+<div class="main_part">
+<a href="/user/showsubcategory/?catnm={{ row.catnm }}" >
+<br/>    
+<img src="{{MEDIA_URL}}{{row.caticonnm}}" height="100" width="150" />
+<br/>
+<b>{{ row.catnm }}</b> 
+</div>
+</a>
+{% endfor %}
+</div>
+</center>
+<div class="cleaner"></div>
+{% endblock %}

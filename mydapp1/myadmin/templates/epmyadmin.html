@@ -1,0 +1,56 @@
+{% extends 'adminhome.html' %}
+{% load static %}
+
+
+{% block content %}
+<center>
+    <h1>Edit Profile Here!!!</h1>
+    <font color="white" style="font-size:20px;">{{output}}</font>
+    <form method="POST" action="/myadmin/epmyadmin/" >
+        {% csrf_token %}
+    <table cellspacing="5" cellpadding="5">
+    <tr>
+        <td>Name</td>
+        <td><input type="text" name="name" placeholder="Enter name" value="{{ userDetails.name }}" /></td>
+    </tr>
+    <tr>
+        <td>Username</td>
+        <td> <input type="text" name="username" placeholder="Enter username" value="{{ userDetails.username }}" readonly /> </td>    
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td><input type="password" name="password" placeholder="Enter password" value="{{ userDetails.password }}" readonly/></td>
+    </tr>   
+    <tr>
+        <td>Mobile</td>
+        <td><input type="text" name="mobile" placeholder="Enter mobile" value="{{ userDetails.mobile }}"/></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td><textarea rows="5" name="address" placeholder="Enter address" >{{ userDetails.address }}</textarea></td>
+    </tr>
+    <tr>
+        <td>City</td>
+        <td>
+         <select name="city" style="width:100%;">
+         <option>{{ userDetails.city }}</option>
+         <option>Indore</option>
+         <option>Ujjain</option>
+         <option>Bhopal</option>
+        </td> 
+    </tr>
+    <tr>
+        <td>Gender</td>
+        <td>
+            Male<input type="radio" name="gender" value="male" {{m}} />
+            &nbsp;&nbsp;
+            Female<input type="radio" name="gender" value="female" {{f}}/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="submit" value="save" /></td>
+    </tr>
+    </table>
+    </form>
+</center>
+{% endblock %}

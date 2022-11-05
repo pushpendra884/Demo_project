@@ -1,0 +1,71 @@
+{% extends 'userhome.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+#part_left
+{
+ width:70%;
+ height:400px;
+ float:left;
+}
+#part_right
+{
+ width:30%;
+ height:400px;
+ float:right;
+}
+#main
+{
+ width: 100%;
+ height: auto;
+ 
+}
+.main_part
+{
+ width: 150px;
+ height: 100px;
+ float: left;
+}
+.main_part a
+{
+ color: #52493a;    
+ text-decoration:none;
+}
+</style>
+
+<div id="part_left">
+
+<h1 style="font-size:35px">SubCategory >> {{catnm}}</h1>
+
+<center>
+<div id="main">
+{% for row in sclist %}
+<div class="main_part">
+<a href="/user/showproduct/?catnm={{catnm}}&subcatnm={{row.subcatnm}}" >
+<br/>    
+<img src="{{MEDIA_URL}}{{row.subcaticonnm}}" height="70" width="100" />
+<br/>
+<b>{{ row.subcatnm }}</b> 
+</div>
+</a>
+{% endfor %}
+</div>
+</center>
+</div>
+<div id="part_right">
+<h1 style="font-size:35px">Category >></h1>
+<ul>
+{% for c_row in clist %}
+<li>
+<a style="color:#52493a;text-decoration: none;" href="/user/showsubcategory/?catnm={{ c_row.catnm }}">
+{{c_row.catnm}}
+</a>
+</li>
+{% endfor %}
+</ul>
+</div>    
+
+
+<div class="cleaner"></div>
+{% endblock %}

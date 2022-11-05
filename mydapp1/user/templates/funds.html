@@ -1,0 +1,38 @@
+{% extends 'userhome.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<center>
+<div id="content" style="margin-left: 20%;">
+   <h1>Make Funds For Charity</h1>
+   <h2>Donate &#8377;100 For Charity</h2>
+    <br>
+
+<form action={{paypalURL}} method="post">
+    <!--Identify your business so that you can collect the payments.-->
+    <input type="hidden" name="bussiness" value="{{paypalId}}">
+
+    <!--Specify a Buy Now Button-->
+    <input type="hidden" name="cmd" value="_xclick">
+
+    <!--Specify details about the items that buyers will purchase-->
+    <input type="hidden" name="item_name" value="funds">
+    <!--<input type="hidden" name="item_number" value=1>-->
+    <input type="hidden" name="amount" value="{{price}}">
+    <input type="hidden" name="currency_code" value="USD">
+
+    <!--Specify URLs-->
+    <input type='hidden' name='cancel_return' value=http://localhost:8000/user/cancel/>
+    <input type='hidden' name='return' value=http://localhost:8000/user/?sunm={{sunm}}&price={{price}} >
+
+    <!--Display the payment button-->
+    <input type="image" name="submit" border="0"
+    height="50" width="200" src="{% static 'images/donate.png' %}" alt="PayPal - The safer, easier way to pay online">  
+</form>
+</div>
+</center>
+<div class="cleaner"></div>
+{% endblock %}
+
